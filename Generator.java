@@ -46,6 +46,7 @@ public class Generator{
 
 				    // Rank players by MMR and print
 				    Collections.shuffle(players, new Random());
+				    players.subList((players.size()/10) * 10, players.size()).clear();
 				    Collections.sort(players);
 				    for(Player kevaman : players){
 				    	System.out.println(kevaman.getName() + " " + kevaman.getPos() + " " + kevaman.getPoints());
