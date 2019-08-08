@@ -231,23 +231,42 @@ public class Match{
 	}
 
 	//	**balanceTeams method**
-	//	Randomly swaps 3 players from weaker blue team onto red team
-	//	THIS METHOD NEEDS TO BE IMPLEMENTED WITH THE ACTUAL ITERATIVE MM ALGORITHM
+	//	Repeatedly checks to see if individual player swaps make teams more balanced
+	// 	May need reworking in future...
 	private void balanceTeams(){
-		ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<6; i++) {
-            list.add(new Integer(i));
-        }
-        Collections.shuffle(list);
-        for (int i=0; i<3; i++) {
-            Player swapping = blue.team[list.get(i)];
-            blue.team[list.get(i)] = red.team[list.get(i)];
-            red.team[list.get(i)] = swapping;
+		
+        boolean finished = false;
+        while(!finished){
+        	finished = true;
+        	int eloDiff = Math.abs(blue.getSkill() - red.getSkill());
+        	for(int i = 0; i < 5; i++){
+        		swapSpots(i);
+            	if(Math.abs(blue.getSkill() - red.getSkill()) > eloDiff){
+            		swapSpots(i);
+            	} else {
+            		eloDiff = Math.abs(blue.getSkill() - red.getSkill());
+            		finished = false;
+            	}
+        	}
         }
         int b = blue.getSkill();
-		System.out.println("Blue skill - " + b);
 		int r = red.getSkill();
-		System.out.println("Red skill - " + r);
+		if(b > r){
+			Team temp = blue;
+			blue = red;
+			red = temp;
+		}
+		System.out.println("Blue skill - " + blue.getSkill());
+		System.out.println("Red skill - " + red.getSkill());
+	}
+
+	//	**swapSpots method**
+	//	Swaps two players assigned to the same position between teams
+	//	Used when balancing teams
+	private void swapSpots(int i){
+		Player swapping = blue.team[i];
+    	blue.team[i] = red.team[i];
+    	red.team[i] = swapping;
 	}
 
 	//	**eloChange method**
