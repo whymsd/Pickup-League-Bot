@@ -1,5 +1,13 @@
 import java.util.*;
 
+/*
+ *	MATCH CLASS
+ *	
+ *	Class that contains all methods for match generation and player elo calculation
+ *	Contains objects for the two teams in the match, and a list of players for the match
+ *	
+ */
+
 public class Match{
 
 	public ArrayList<Player> lads;
@@ -32,14 +40,16 @@ public class Match{
 		
 	}
 
+	//	**makeTeams method**
+	//	Called by Match constructor, generates the teams by calling other methods in sequence
 	private void makeTeams(){
 		PosCollection[] roles = {new PosCollection(0,0,"T"),
 								new PosCollection(0,0,"J"),
 								new PosCollection(0,0,"M"),
 								new PosCollection(0,0,"A"),
 								new PosCollection(0,0,"S")};
-		for(Player mandem : lads){
-			assign(mandem, roles);
+		for(Player man : lads){
+			assign(man, roles);
 		}
 		/*System.out.println("---------SORTING--------------");
 		for(PosCollection sure : roles){
@@ -56,6 +66,9 @@ public class Match{
 				+ blue.team[4].getName() + " vs. " + red.team[4].getName() + "\n------------------------------------------------");*/
 	}
 
+	//	**reprio method**
+	//	Sorts the 5 roles in a given game into which order they should be picked (the role with the fewest primary/secondaries in a match gets priority)
+	//	Called once in setPlayers method
 	private void reprio(PosCollection[] roles){
 		for(int b = 0; b < 4; b++){
 			for(int i = (b + 1); i < 5; i++){
@@ -68,6 +81,9 @@ public class Match{
 		}
 	}
 
+	//	**assign method**
+	//	Records how many players have selected each role as primary/secondary
+	//	Called for each player in makeTeams method
 	private void assign(Player x, PosCollection[] collect){
 		for(int i = 0; i < collect.length; i++){
 			if(x.primary.equals(collect[i].pos)){
@@ -79,6 +95,9 @@ public class Match{
 		}
 	}
 
+	//	**reduce method**
+	//	Refreshes the current number of unassigned players' position preference, the inverse of assign method
+	//	Called whenever a player is added to the game in a specific position
 	private void reduce(Player x, PosCollection[] collect){
 		for(int i = 0; i < collect.length; i++){
 			if(x.primary.equals(collect[i].pos)){
@@ -90,6 +109,11 @@ public class Match{
 		}
 	}
 
+	//	**setPlayers method**
+	//	Finds what order to assign positions, then assigns players to those positions
+	//	Players are selected by following criteria: Primary matches current role > Primary is "F" (fill) > Secondary matches current role > Secondary is "F"
+	//	Puts weaker player on blue team, and removes player and role from selection at the end of each iteration
+	//	Called as part of makeTeams method
 	private void setPlayers(PosCollection[] roles){
 		for(int turns = 0; turns < 5; turns++){
 			reprio(roles);
@@ -170,6 +194,9 @@ public class Match{
 		}
 	}
 
+	//	**lookupP method**
+	//	Checks the popularity of a player's primary role in the current role list
+	//	Called when prioritising players who have the same secondary role
 	private int lookupP(Player guy, PosCollection[] roles){
 		for(int i = 0; i < roles.length; i++){
 			if(roles[i].pos.equals(guy.primary)){
@@ -179,6 +206,8 @@ public class Match{
 		return -1;
 	}
 
+	//	**reduce method**
+	//	Not used afaik :) outdated version of the previous "reduce" method
 	private void reduce(String x, int[] collect){
 		switch(x){
 			case "T":
@@ -201,6 +230,9 @@ public class Match{
 		}
 	}
 
+	//	**balanceTeams method**
+	//	Randomly swaps 3 players from weaker blue team onto red team
+	//	THIS METHOD NEEDS TO BE IMPLEMENTED WITH THE ACTUAL ITERATIVE MM ALGORITHM
 	private void balanceTeams(){
 		ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i=1; i<6; i++) {
@@ -218,6 +250,8 @@ public class Match{
 		System.out.println("Red skill - " + r);
 	}
 
+	//	**eloChange method**
+	//	Changes the elo for each player in the game dependent on the result (passed in as arg)
 	public void eloChange(boolean winner){
 
 		int b = blue.getSkill();
@@ -234,6 +268,9 @@ public class Match{
 
 	}
 
+	//	**eloCalculation method**
+	//	Runs the calculation algorithm for a player and returns their elo
+	//	Need to test whether or not this works
 	private int eloCalculation(boolean winner, int pSkill, int oppSkill){
 		int eloDifference = oppSkill - pSkill;
 		double percentage = 1 / ( 1 + Math.pow( 10, (double) eloDifference / 400 ) );

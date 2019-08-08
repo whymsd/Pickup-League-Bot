@@ -7,6 +7,13 @@ import java.util.Random;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/*	RESULTS
+ *	
+ *	This class takes in a sorted list of players from "match_list.txt" and remakes the matches
+ *	Prints the matchup lists to the console, and asks for results on each match
+ *	When the results are given, calculates the new elo for each player and prints their stats to "day_list.txt"
+ */
+
 public class Results{
 
      public static void main(String []args){
@@ -47,12 +54,9 @@ public class Results{
 				    	games.add(new Match(lads));
 				    }
 				    for(Match m : games){
-					    System.out.println("MATCHUP:\n"
-						+ m.blue.team[0].getName() + " vs. " + m.red.team[0].getName() + "\n"
-						+ m.blue.team[1].getName() + " vs. " + m.red.team[1].getName() + "\n"
-						+ m.blue.team[2].getName() + " vs. " + m.red.team[2].getName() + "\n"
-						+ m.blue.team[3].getName() + " vs. " + m.red.team[3].getName() + "\n"
-						+ m.blue.team[4].getName() + " vs. " + m.red.team[4].getName() + "\n------------------------------------------------");
+					    System.out.println("MATCHUP:\nBlue side - "
+						+ m.blue.team[0].getName() + ",  " + m.blue.team[1].getName() + ",  " + m.blue.team[2].getName() + ",  " + m.blue.team[3].getName() + ",  " + m.blue.team[4].getName() + "\nRed side - "
+						+ m.red.team[0].getName() + ",  " + m.red.team[1].getName() + ",  " + m.red.team[2].getName() + ",  " + m.red.team[3].getName() + ",  " + m.red.team[4].getName() + "\n------------------------------------------------");
 					}
 				    valid = true;
 				}

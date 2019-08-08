@@ -1,5 +1,14 @@
 import java.util.*;
 
+/*
+ *	PLAYER CLASS
+ *	
+ *	Class that represents a player in the system
+ *	Player has a name, a primary + secondary position and a current points total
+ *	Comparator ranks players by points
+ *	
+ */
+
 public class Player implements Comparable<Player>{
 	
 	private String name;

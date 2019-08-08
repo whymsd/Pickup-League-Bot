@@ -1,3 +1,12 @@
+/*
+ *	POSCOLLECTION CLASS
+ *	
+ *	Class used to represent a role in a match (always used as part of an array of the 5 roles)
+ *	Lists the number of players who have the role as primary + secondary
+ *	Contains methods to increment/decrement the primary/secondary counts, as well as remove the role form being prioritized
+ *	
+ */
+
 public class PosCollection{
 	
 	private int primary;

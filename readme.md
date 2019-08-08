@@ -1,4 +1,4 @@
-If it's on git might as well make a readme o7
+If it's on git might as well make a readme o7 (can now access at work which helps)
 
 ### How it works
 - List of players for a given round put into day_list.txt
@@ -6,9 +6,11 @@ If it's on git might as well make a readme o7
 - Calculate +/- on https://www.3dkingdoms.com/chess/elo.htm (since the program for it is inting...)
 
 ### TO DO (a l o t)
-- Add RNGing into generator
-- Fix matchmaking algo
+- Clean up code
+- Add full player selection RNG into selection algorithm
+- Fix matchmaking algo so it fully balances teams (needed before results program can work)
+- Prevent Generator from infinitely looping (need to work out how I want to do this)
 - Make results program actually work
-- Automate changing of points
-
---- add actual discord integration in JS :)
+- Automate changing of points (may require a lot of work)
+- Fix the dakin bug
+- *add actual discord integration in JS :)*
