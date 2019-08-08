@@ -6,7 +6,6 @@ If it's on git might as well make a readme o7 (can now access at work which help
 - Calculate +/- on https://www.3dkingdoms.com/chess/elo.htm (since the program for it is inting...)
 
 ### TO DO (a l o t)
-- Fix matchmaking algo so it fully balances teams (needed before results program can work)
 - Prevent Generator from infinitely looping (need to work out how I want to do this)
 - Make results program actually work
 - Automate changing of points (may require a lot of work)
