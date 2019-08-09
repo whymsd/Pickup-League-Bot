@@ -289,7 +289,6 @@ public class Match{
 
 	//	**eloCalculation method**
 	//	Runs the calculation algorithm for a player and returns their elo
-	//	Need to test whether or not this works
 	private int eloCalculation(boolean winner, int pSkill, int oppSkill){
 		int eloDifference = oppSkill - pSkill;
 		double percentage = 1 / ( 1 + Math.pow( 10, (double) eloDifference / 400 ) );
