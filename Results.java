@@ -21,13 +21,13 @@ public class Results{
      	ArrayList<Player> guys = new ArrayList<Player>();
      	ArrayList<Match> games = new ArrayList<Match>();
 
-     	boolean valid = false;
+     	int resetCount = 0;
 
      	System.out.println("------------------------------");
 
      	try{
 
-	     	while(!valid){
+	     	while(resetCount != -1){
 
 		     	try(BufferedReader br = new BufferedReader(new FileReader("match_list.txt"))) {
 				    String line = br.readLine();
@@ -51,14 +51,14 @@ public class Results{
 				    	for(int j = 0; j < 10; j++){
 				    		lads.add(guys.get(i+j));
 				    	}
-				    	games.add(new Match(lads));
+				    	games.add(new Match(lads, (resetCount>50 ? false : true)));
 				    }
 				    for(Match m : games){
 					    System.out.println("MATCHUP:\nBlue side - "
 						+ m.blue.team[0].getName() + ",  " + m.blue.team[1].getName() + ",  " + m.blue.team[2].getName() + ",  " + m.blue.team[3].getName() + ",  " + m.blue.team[4].getName() + "\nRed side - "
 						+ m.red.team[0].getName() + ",  " + m.red.team[1].getName() + ",  " + m.red.team[2].getName() + ",  " + m.red.team[3].getName() + ",  " + m.red.team[4].getName() + "\n------------------------------------------------");
 					}
-				    valid = true;
+				    resetCount = -1;
 				}
 
 				
@@ -66,7 +66,7 @@ public class Results{
 					System.out.println("****************Error making matches. Resetting...*********************************");
 					guys = new ArrayList<Player>();
 					games = new ArrayList<Match>();
-
+					resetCount++;
 				}
 
 			}
