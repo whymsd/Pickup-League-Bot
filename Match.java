@@ -131,7 +131,6 @@ public class Match{
 			for(int i = 0; i < lads.size(); i++){
 				if(lads.get(i).primary.equals(roles[0].pos)){
 					indexes.add(i);
-					System.out.println("Adding " + lads.get(i).getName() + " at role " + roles[0].pos + " in first loop");
 				}
 			}
 			if(indexes.size() < 2){
@@ -139,7 +138,6 @@ public class Match{
 				for(int i = 0; i < lads.size(); i++){
 					if(lads.get(i).primary.equals("F")){
 						indexes.add(i);
-						System.out.println("Adding " + lads.get(i).getName() + " at role " + roles[0].pos + " in second loop");
 						if (indexes.size() > 2){
 							indexes.subList(2, indexes.size()).clear();
 						}
@@ -150,7 +148,6 @@ public class Match{
 					for(int i = 0; i < lads.size(); i++){
 						if(lads.get(i).secondary.equals(roles[0].pos)){
 							indexes.add(i);
-							System.out.println("Adding " + lads.get(i).getName() + " at role " + roles[0].pos + " in third loop");
 							if (indexes.size() > 2){
 								if(lookupP(lads.get(indexes.get(1)), roles) > lookupP(lads.get(indexes.get(2)), roles)){
 									int temp = indexes.get(2);
@@ -171,7 +168,6 @@ public class Match{
 						for(int i = 0; i < lads.size(); i++){
 							if(lads.get(i).secondary.equals("F")){
 								indexes.add(i);
-								System.out.println("Adding " + lads.get(i).getName() + " at role " + roles[0].pos + " in fourth loop");
 								if (indexes.size() > 2){
 									if(lookupP(lads.get(indexes.get(1)), roles) > lookupP(lads.get(indexes.get(2)), roles)){
 										int temp = indexes.get(2);
@@ -259,7 +255,7 @@ public class Match{
             	} else {
             		eloDiff = Math.abs(blue.getSkill() - red.getSkill());
             		finished = false;
-            		System.out.println("Swapping " + blue.team[i].getName() + " and " + red.team[i].getName() + " to make an elo diff of " + eloDiff);
+            		//System.out.println("Swapping " + blue.team[i].getName() + " and " + red.team[i].getName() + " to make an elo diff of " + eloDiff);
             	}
         	}
         }
