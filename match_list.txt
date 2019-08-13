@@ -1,10 +1,10 @@
-DontCrossKevaman A/F 1097
-JobOpportunities M/F 1082
-Tedblonde A/F 1016
-Zoinkers M/F 1002
-Guardian M/F 980
-DontKrossKevaman T/F 980
-MisterCrepsley T/F 959
-Moot S/F 946
-Kurison S/F 922
-TGIndian M/F 891
+DontCrossKevaman A/M 1097 6-1
+JobOpportunities M/T 1082 6-0
+h0wl F/F 1039 4-3
+Zoinkers M/A 1002 5-6
+Whymsy T/F 983 2-4
+DontKrossKevaman T/J 980 3-4
+MisterCrepsley T/J 959 0-1
+Moot S/M 946 2-4
+Kurison S/J 922 2-8
+TGIndian M/S 891 2-8

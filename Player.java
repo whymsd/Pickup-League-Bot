@@ -15,13 +15,18 @@ public class Player implements Comparable<Player>{
 	public String primary;
 	public String secondary;
 	private int points;
+	public int wins;
+	public int losses;
 
-	public Player(String name, String pos, int points){
+	public Player(String name, String pos, int points, String wl){
 		this.name = name;
 		this.points = points;
 		String[] yeah = pos.split("/");
 		this.primary = yeah[0];
 		this.secondary = yeah[1];
+		String[] ok = wl.split("-");
+		wins = Integer.parseInt(ok[0]);
+		losses = Integer.parseInt(ok[1]);
 	}
 
 	public String getName(){
@@ -34,6 +39,10 @@ public class Player implements Comparable<Player>{
 
 	public int getPoints(){
 		return points;
+	}
+
+	public String getWL(){
+		return (wins + "-" + losses);
 	}
 
 	public void setPoints(int points){

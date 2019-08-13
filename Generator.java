@@ -37,15 +37,16 @@ public class Generator{
 				    // Parse player info from day_list.txt and add to player list
 				    while (line != null) {
 				        String[] breaker = line.split("\\s+");
+				        String wl = breaker[breaker.length - 2];
 				        int mmr = Integer.parseInt(breaker[breaker.length - 3]);
 				        String pos = breaker[breaker.length - 4];
 				        String[] fragments = Arrays.copyOfRange(breaker, 0, breaker.length - 4);
 				        String ign = String.join(" ", fragments);
 				        if(breaker[breaker.length - 1].equals("Y")){
-				        	confPlayers.add(new Player(ign, pos, mmr));
+				        	confPlayers.add(new Player(ign, pos, mmr, wl));
 				        }
 				        else {
-				        	players.add(new Player(ign, pos, mmr));
+				        	players.add(new Player(ign, pos, mmr, wl));
 				        }
 				        line = br.readLine();
 				    }
@@ -109,7 +110,7 @@ public class Generator{
 			// Writes list of ranked players for this round to match_list
 			FileWriter fw = new FileWriter("match_list.txt");
 			for(Player kevaman : players){
-		    	fw.write(kevaman.getName() + " " + kevaman.getPos() + " " + kevaman.getPoints() + "\n");
+		    	fw.write(kevaman.getName() + " " + kevaman.getPos() + " " + kevaman.getPoints() + " " + kevaman.getWL() + "\n");
 		    }
 			fw.close();
 
