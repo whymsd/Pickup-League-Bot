@@ -1,10 +1,12 @@
-JobOpportunities M/T 1082 6-0
-Yoh M/A 922 0-4
-Asher M/A 1057 5-2
-Zoinkers M/A 1002 5-6
-Guardian M/A 958 3-5
-Hawkens M/A 1035 4-2
-Markgaffo M/S 1020 3-2
-Moot S/M 946 2-4
-Platodig M/J 1063 7-4
-TGIndian M/S 891 2-8
+DontCrossKevaman A/M 1097 6-1 Y
+DontKrossKevaman T/J 980 3-4 Y
+JobOpportunities M/T 1082 6-0 N
+h0wl F/F 1039 4-3 N
+Tedblonde A/M 1016 4-2 N
+Zoinkers M/A 1002 5-6 N
+Whymsy T/F 983 2-4 N
+Guardian M/A 980 3-5 N
+MisterCrepsley T/J 959 0-1 N
+Moot S/M 946 2-4 N
+Kurison S/J 922 2-8 N
+TGIndian M/S 891 2-8 N

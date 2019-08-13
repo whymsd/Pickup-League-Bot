@@ -29,24 +29,32 @@ public class Generator{
 
 	     	while(resetCount != -1){
 
+     			ArrayList<Player> confPlayers = new ArrayList<Player>();
+
 		     	try(BufferedReader br = new BufferedReader(new FileReader("day_list.txt"))) {
 				    String line = br.readLine();
 
 				    // Parse player info from day_list.txt and add to player list
 				    while (line != null) {
 				        String[] breaker = line.split("\\s+");
-				        int mmr = Integer.parseInt(breaker[breaker.length - 2]);
-				        String pos = breaker[breaker.length - 3];
-				        String[] fragments = Arrays.copyOfRange(breaker, 0, breaker.length - 3);
+				        int mmr = Integer.parseInt(breaker[breaker.length - 3]);
+				        String pos = breaker[breaker.length - 4];
+				        String[] fragments = Arrays.copyOfRange(breaker, 0, breaker.length - 4);
 				        String ign = String.join(" ", fragments);
-				        players.add(new Player(ign, pos, mmr));
+				        if(breaker[breaker.length - 1].equals("Y")){
+				        	confPlayers.add(new Player(ign, pos, mmr));
+				        }
+				        else {
+				        	players.add(new Player(ign, pos, mmr));
+				        }
 				        line = br.readLine();
 				    }
 				    br.close();
 
 				    // Rank players by MMR and print
 				    Collections.shuffle(players, new Random());
-				    players.subList((players.size()/10) * 10, players.size()).clear();
+				    players.subList((((players.size() + confPlayers.size())/10) * 10) - confPlayers.size(), players.size()).clear();
+				    players.addAll(confPlayers);
 				    Collections.sort(players);
 				    for(Player kevaman : players){
 				    	System.out.println(kevaman.getName() + " " + kevaman.getPos() + " " + kevaman.getPoints());
